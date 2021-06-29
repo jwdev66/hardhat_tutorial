@@ -7,7 +7,7 @@ contract Calculator {
     address public user;
     uint256 public calculatorAddCount;
     
-    event Add(uint256 a, uint256 b);
+    event Add(uint256 a, uint256 b, address txOrigin, address msgSenderAddress, address _this);
     
     constructor() {
         calculatorAddCount = 0;
@@ -19,7 +19,7 @@ contract Calculator {
         calculateResult = a + b;
         assert(calculateResult >= a);
         
-        emit Add(a, b);
+        emit Add(a, b, tx.origin, msg.sender, address(this));
         user = msg.sender;
         
         return calculateResult;
