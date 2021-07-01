@@ -9,8 +9,9 @@ contract Calculator {
     
     event Add(uint256 a, uint256 b, address txOrigin, address msgSenderAddress, address _this);
     
-    constructor() {
-        calculatorAddCount = 0;
+    constructor(address _user, uint256 _result) {
+        user = _user;
+        calculateResult = _result;
     }
 
     function add(uint256 a, uint256 b) public returns (uint256) {
