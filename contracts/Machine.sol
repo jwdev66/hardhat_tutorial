@@ -8,15 +8,14 @@ contract Machine {
     uint256 public calculateResult;
     address public user;
     uint256 public machineAddCount;
-    address public calculator = address(new Calculator());
+    address public calculator;
     
 
     event AddedValuesByDelegateCall(uint256 a, uint256 b, bool success);
     event AddedValuesByCall(uint256 a, uint256 b, bool success);
     
-    constructor() {
-        calculateResult = 0;
-        machineAddCount = 0;
+    constructor(address _calculator) {        
+        calculator = _calculator;
     }
     
     function addValuesWithDelegateCall(uint256 a, uint256 b) public returns (uint256) {
